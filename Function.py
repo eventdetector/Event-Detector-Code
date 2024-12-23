@@ -73,7 +73,7 @@ def detectMainAccurate(fileList, pattern, startCoeff, endCoeff, filterCoeff, min
     # with open(resultName, 'r') as f:
     #     resultContent = f.read()
     #
-    #     # 设置列名
+    #  
     # column_names = ["Start point", "End point", "Time of duration", "Current amplitude", "Baseline",
     #                 "Amplitude/Baseline*10000",
     #                 "Baseline to event peak amplitude(pA)",
@@ -81,16 +81,16 @@ def detectMainAccurate(fileList, pattern, startCoeff, endCoeff, filterCoeff, min
     #                 "Front full peak width(ms)",
     #                 "After full peak width(ms)",
     #                 "First half peak width(ms)", "Back half peak width(ms)"]
-    # # 将TXT文件转换为DataFrame
+    # 
     # df = pd.read_csv(resultName, delimiter='\t', names=column_names)
-    # # 将DataFrame保存为Excel文件
+    # 
     # excel_path = 'result/' + nowTime + '.xlsx'
     # df.to_excel(excel_path, index=False)
     #
     # elapsed = (time.perf_counter() - start_time)
     # print("Time used:", elapsed)
     # print('finish')
-    # return excel_path  # 返回表格的路径
+    # return excel_path
 
     
     start_time = time.perf_counter()
@@ -109,7 +109,6 @@ def detectMainAccurate(fileList, pattern, startCoeff, endCoeff, filterCoeff, min
     with open(resultName, 'r') as f:
         resultContent = f.read()
 
-    # 设置列名
     column_names = ["Start point", "End point", "Time of duration", "Current amplitude", "Baseline",
                     "Amplitude/Baseline*10000",
                     "Baseline to event peak amplitude(pA)",
@@ -117,16 +116,16 @@ def detectMainAccurate(fileList, pattern, startCoeff, endCoeff, filterCoeff, min
                     "Front full peak width(ms)",
                     "After full peak width(ms)",
                     "First half peak width(ms)", "Back half peak width(ms)"]
-    # 将TXT文件转换为DataFrame
+
     df = pd.read_csv(resultName, delimiter='\t', names=column_names)
-    # 将DataFrame保存为Excel文件
+
     excel_path = 'result/' + nowTime+'Accurate' + '.xlsx'
     df.to_excel(excel_path, index=False)
 
     elapsed = (time.perf_counter() - start_time)
     print("Time used:", elapsed)
     print('finish')
-    return excel_path  # 返回表格的路径
+    return excel_path 
 def detectMainFast(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDuration, maxDuration):
     
     start_time = time.perf_counter()
@@ -145,7 +144,7 @@ def detectMainFast(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDura
     with open(resultName, 'r') as f:
         resultContent = f.read()
 
-    # 设置列名
+
     column_names = ["Start point", "End point", "Time of duration", "Current amplitude", "Baseline",
                     "Amplitude/Baseline*10000",
                     "Baseline to event peak amplitude(pA)",
@@ -153,16 +152,16 @@ def detectMainFast(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDura
                     "Front full peak width(ms)",
                     "After full peak width(ms)",
                     "First half peak width(ms)", "Back half peak width(ms)"]
-    # 将TXT文件转换为DataFrame
+
     df = pd.read_csv(resultName, delimiter='\t', names=column_names)
-    # 将DataFrame保存为Excel文件
+
     excel_path = 'result/' + nowTime  +'Fast'+ '.xlsx'
     df.to_excel(excel_path, index=False)
 
     elapsed = (time.perf_counter() - start_time)
     print("Time used:", elapsed)
     print('finish')
-    return excel_path  # 返回表格的路径
+    return excel_path 
 
 def detectMainFast2(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDuration, maxDuration):
     start_time= time.perf_counter()
@@ -222,7 +221,7 @@ def detectMainFast2(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDur
 
     po.close()
     po.join()
-    # 设置列名
+
     column_names = ["Start point", "End point", "Time of duration", "Current amplitude", "Baseline",
                     "Amplitude/Baseline*10000",
                     "Baseline to event peak amplitude(pA)",
@@ -230,16 +229,16 @@ def detectMainFast2(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDur
                     "Front full peak width(ms)",
                     "After full peak width(ms)",
                     "First half peak width(ms)", "Back half peak width(ms)"]
-    # 将TXT文件转换为DataFrame
+
     df = pd.read_csv(resultName, delimiter='\t', names=column_names)
-    # 将DataFrame保存为Excel文件
+
     excel_path = 'result/' + nowTime + '.xlsx'
     df.to_excel(excel_path, index=False)
 
     elapsed = (time.perf_counter() - start_time)
     print("Time used:", elapsed)
     print('finish')
-    return excel_path  # 返回表格的路径
+    return excel_path 
 def detectMain(pattern, startCoeff, endCoeff, filterCoeff, minDuration, maxDuration):
     path = "data/"
     fileName = os.listdir(path)
