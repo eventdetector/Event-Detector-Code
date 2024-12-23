@@ -16,7 +16,7 @@ from multiprocessing import Pool
 
 
 def detectMainAccurate(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDuration, maxDuration,windowSize,bufferSize,stepSize):
-    # 多线程原始写法：
+    # 
     # start_time = time.perf_counter()
     # fileName = fileList
     # nowTime = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
@@ -92,7 +92,7 @@ def detectMainAccurate(fileList, pattern, startCoeff, endCoeff, filterCoeff, min
     # print('finish')
     # return excel_path  # 返回表格的路径
 
-    #单线程写法：
+    
     start_time = time.perf_counter()
     fileName = fileList
     nowTime = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
@@ -128,7 +128,7 @@ def detectMainAccurate(fileList, pattern, startCoeff, endCoeff, filterCoeff, min
     print('finish')
     return excel_path  # 返回表格的路径
 def detectMainFast(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDuration, maxDuration):
-    #单线程写法：
+    
     start_time = time.perf_counter()
     fileName = fileList
     nowTime = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
@@ -163,7 +163,7 @@ def detectMainFast(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDura
     print("Time used:", elapsed)
     print('finish')
     return excel_path  # 返回表格的路径
-#多线程改进版
+
 def detectMainFast2(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDuration, maxDuration):
     start_time= time.perf_counter()
     fileName = fileList
