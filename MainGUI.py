@@ -91,7 +91,7 @@ if __name__ == "__main__":
                                                         "Axon Binary File(*.abf)")
             fileList = ';'.join(fileNames)
             global filepath
-            filepath=fileList  #全局变量，画事件的时候用这个，开闭性垃圾，但是先实现功能
+            filepath=fileList  
             self.textBrowser_fileName.setPlainText(fileList)
             #show the fiture
             self.showABF(fileList)
@@ -189,7 +189,7 @@ if __name__ == "__main__":
             self.MplWidget2.canvas.draw()
 
             # Draw the red rectangle around the specified data range
-            # self.MplWidget.canvas.axes.clear() 如果有这句那么每个事件单独被框，相当于刷新，如果去掉那么所有选中展示的都在一个图里被框
+            # self.MplWidget.canvas.axes.clear() 
             self.MplWidget.canvas.axes.plot(abf.sweepX, abf.sweepY, linewidth=0.3, color="grey")
             rect_x = abf.sweepX[start_point]
             rect_width = abf.sweepX[end_point] - abf.sweepX[start_point]
