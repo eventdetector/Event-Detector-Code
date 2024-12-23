@@ -37,8 +37,7 @@ if __name__ == "__main__":
         def __init__(self, parent=None):
             super(MyMainWindow, self).__init__(parent)
             self.setupUi(self)
-            mplStyle.use("classic")#使用样式，必须在绘图之前调用,修改字体后才可显示汉字
-            #设置窗口名称和图标
+            mplStyle.use("classic")
             self.setWindowTitle("EZ")
             # self.setWindowIcon(QIcon(':/logo.ico'))
             self.lineEdit_pattern.setText("down")
@@ -52,19 +51,19 @@ if __name__ == "__main__":
             self.lineEdit_step.setText("1024")
             self.pushButton_selectFile.clicked.connect(self.getFile)
             self.pushButton_start.clicked.connect(self.detect)
-            self.pushButton_start.clicked.connect(self.creat_table_show) #以表格的形式显示内容
+            self.pushButton_start.clicked.connect(self.creat_table_show)
             plt.style.use('fast')
             self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
             self.addToolBar(NavigationToolbar(self.MplWidget2.canvas, self))
             # self.textBrowser.setFixedWidth(1000)
             # self.textBrowser.setText("The results are displayed here")
-            # 添加右键菜单
+            
             self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
             self.tableWidget.customContextMenuRequested.connect(self.generateMenu)
 
-            #双模式
+      
             self.comboBox = self.findChild(QtWidgets.QComboBox, 'comboBox_2')
-            #self.comboBox.currentIndexChanged.connect(self.combo_changed)  # 绑定事件
+            #self.comboBox.currentIndexChanged.connect(self.combo_changed)
 
 
         def showABF(self,fileList):
@@ -87,7 +86,7 @@ if __name__ == "__main__":
 
 
         def getFile(self):
-            fileNames, _ = QFileDialog.getOpenFileNames(self, 'Select File', 'C:\\Users\\涂图\\Desktop\\abf文件',
+            fileNames, _ = QFileDialog.getOpenFileNames(self, 'Select File', 'C:\\Users\\user\\Desktop\\abf文件',
                                                         "Axon Binary File(*.abf)")
             fileList = ';'.join(fileNames)
             global filepath
@@ -98,7 +97,6 @@ if __name__ == "__main__":
 
 
         def detect(self, resultPath=None):
-            #获取当前选中的模式
             selected_mode=self.comboBox.currentIndex()
 
             global path_openfile_name
@@ -120,13 +118,13 @@ if __name__ == "__main__":
                     resultPath = detectMainFast(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDuration, maxDuration)
                     path_openfile_name=resultPath
                     print(path_openfile_name)
-                    print("执行快速模式")
+                 
                 # self.textBrowser.setText(resultContent)
                 else:
                     resultPath = detectMainAccurate(fileList, pattern, startCoeff, endCoeff, filterCoeff, minDuration, maxDuration,windowSize,bufferSize,stepSize)
                     path_openfile_name = resultPath
                     print(path_openfile_name)
-                    print("执行精确模式")
+                   
 
         def showNoFileErrorMessageBox(self):
             QMessageBox.critical(self, "NoFileError", "Please select files before detecting", )
@@ -157,7 +155,6 @@ if __name__ == "__main__":
             else:
                 self.centralWidget.show()
 
-        # 新添加的槽函数
         def generateMenu(self, pos):
             selected_rows = [index.row() for index in self.tableWidget.selectionModel().selectedRows()]
             if selected_rows:
@@ -168,7 +165,7 @@ if __name__ == "__main__":
                     for row_num in selected_rows:
                         start_point = int(float(self.tableWidget.item(row_num, 0).text()))
                         end_point = int(float(self.tableWidget.item(row_num, 1).text()))
-                        self.showPartABF(start_point - 5, end_point)  #从开始点前五个点开始展示
+                        self.showPartABF(start_point - 5, end_point)  
             else:
                 return
 
